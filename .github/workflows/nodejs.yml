@@ -22,12 +22,12 @@ jobs:
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: ${{ env.matrix.node-version }}
       - run: npm install
-        working-directory: ${{ working-directory }}
+        working-directory: ${{ env.working-directory }}
       - run: npm run build --if-present
-        working-directory: ${{ working-directory }}
+        working-directory: ${{ env.working-directory }}
       - run: npm test
-        working-directory: ${{ working-directory }}
+        working-directory: ${{ env.working-directory }}
         env:
           CI: true
