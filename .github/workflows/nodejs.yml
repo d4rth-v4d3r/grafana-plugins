@@ -12,11 +12,11 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
+    env:
+      working-directory: ./juky-markers-map-panel
     strategy:
       matrix:
         node-version: [12.x]
-
     steps:
       - uses: actions/checkout@v2
       - name: Use Node.js ${{ matrix.node-version }}
@@ -24,7 +24,10 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - run: npm install
+        working-directory: ${{ working-directory }}
       - run: npm run build --if-present
+        working-directory: ${{ working-directory }}
       - run: npm test
+        working-directory: ${{ working-directory }}
         env:
           CI: true
