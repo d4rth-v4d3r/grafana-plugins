@@ -7,7 +7,7 @@ import ColorService from 'service/ColorService';
 import { PinRow, PinSerieProps, PinsProps } from 'types';
 import './Pin.css';
 
-const dataFrameToJson = (frame: DataFrame): Array<PinRow> => {
+const dataFrameToJson = (frame: DataFrame): PinRow[] => {
   const source = fromPairs(map(frame.fields, field => [field.name, field.values.toArray()]));
 
   return map(first(frame.fields)?.values as any, (_v, index: number) =>
