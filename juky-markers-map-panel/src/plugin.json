@@ -1,29 +1,25 @@
 {
   "type": "panel",
-  "name": "Simple Panel",
-  "id": "myorgid-simple-panel",
+  "name": "Markers map panel",
+  "id": "juky-markers-map-panel",
 
   "info": {
-    "description": "Simple React Panel",
-    "author": {
-      "name": "Your Name"
-    },
-    "keywords": ["Simple"],
+    "description": "Markers map panel",
     "logos": {
       "small": "img/logo.svg",
       "large": "img/logo.svg"
     },
-    "links": [
-      {"name": "Website", "url": "https://github.com/grafana/simple-react-panel"},
-      {"name": "License", "url": "https://github.com/grafana/simple-react-panel/blob/master/LICENSE"}
-    ],
-    "screenshots": [],
+    "author": {
+      "name": "Juky",
+      "url": "https://github.com/d4rth-v4d3r"
+    },
+    "keywords": ["pin", "marker", "panel", "panel"],
     "version": "%VERSION%",
     "updated": "%TODAY%"
   },
 
   "dependencies": {
-    "grafanaVersion": "6.3.x",
+    "grafanaVersion": "6.x.x",
     "plugins": []
   }
 }
