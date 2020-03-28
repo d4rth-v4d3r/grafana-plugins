@@ -23,6 +23,8 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
+      - run: npx npm-force-resolutions
+        working-directory: ${{ env.working-directory }}
       - run: npm install
         working-directory: ${{ env.working-directory }}
       - run: npm run build --if-present
@@ -31,6 +33,6 @@ jobs:
         uses: actions/upload-artifact@v1.0.0
         with:
           # Artifact name
-          name: juky-markers-map-plugin 
+          name: juky-markers-map-plugin
           # Directory containing files to upload
           path: ./
