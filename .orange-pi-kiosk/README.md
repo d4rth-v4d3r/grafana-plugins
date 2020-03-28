@@ -4,5 +4,8 @@
 1. The Armbian OS used is Buster, minimal installation with XFCE.
 1. Change the **url** of the Grafana dashboard, your credentials and your **home** location at `xinitrc` script.
    1. You can get more info about [Grafana Kiosk](https://github.com/grafana/grafana-kiosk) configuration.
+1. Verify your device resolution in the `install.sh` script, specifically the Chromium browser resolution (ex. `--window-size=1920,1080`)
 1. Run the `install.sh` script
 1. Enjoy! Happy coding!
+
+Thanks to Sylvain Duran and his amazing [post](https://www.sylvaindurand.org/launch-chromium-in-kiosk-mode/).
