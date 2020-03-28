@@ -1,0 +1,7 @@
+#!/bin/sh
+xset -dpms
+xset s off
+xset s noblank
+
+unclutter &
+/home/ambit/grafana/grafana-kiosk/bin/grafana-kiosk.linux.arm64 --URL http://192.168.0.31:3003/playlists/play/1 --login-method local --username username --password password --kiosk-mode full --playlist --autofit
