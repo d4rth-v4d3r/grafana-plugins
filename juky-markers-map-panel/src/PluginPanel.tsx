@@ -1,4 +1,4 @@
-// import '@fortawesome/fontawesome-free/css/all.css';
+//import '@fortawesome/fontawesome-free/css/all.css';
 import { PanelProps } from '@grafana/data';
 import 'moment/locale/es';
 import React, { PureComponent } from 'react';

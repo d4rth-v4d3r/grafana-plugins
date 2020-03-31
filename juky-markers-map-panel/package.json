@@ -3,11 +3,12 @@
   "version": "1.0.0",
   "description": "Markers map panel",
   "scripts": {
-    "build": "grafana-toolkit plugin:build",
+    "build": "yarn sass&&grafana-toolkit plugin:build",
     "test": "grafana-toolkit plugin:test",
     "dev": "grafana-toolkit plugin:dev",
     "watch": "grafana-toolkit plugin:dev --watch",
-    "build-docker": "yarn&&yarn build"
+    "build-docker": "yarn&&yarn build",
+    "sass": "cp -r node_modules/@fortawesome/fontawesome-free/webfonts src/assets&&gulp sass2css"
   },
   "repository": "github:grafana/simple-react-panel",
   "author": "juky",
@@ -23,7 +24,10 @@
     "@types/lodash": "^4.14.149",
     "@types/object-hash": "^1.3.1",
     "@types/randomcolor": "^0.5.4",
-    "@types/react-map-gl": "^5.2.1"
+    "@types/react-map-gl": "^5.2.1",
+    "gulp": "^4.0.2",
+    "gulp-sass": "^4.0.2",
+    "gulp-sass-unicode": "^1.0.5"
   },
   "resolutions": {
     "@babel/preset-env": "7.9.0"
