@@ -1,0 +1,9 @@
+version: "3"
+services:
+  node-compiler:
+    image: node:12.16
+    container_name: "node-compiler"
+    volumes:
+      - "./:/home/node/app"
+    working_dir: /home/node/app
+    entrypoint: yarn build-docker
