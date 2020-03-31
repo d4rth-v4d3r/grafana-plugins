@@ -1,4 +1,5 @@
 import { DataFrame } from '@grafana/data';
+import { Icon } from '@material-ui/core';
 import Chip from '@material-ui/core/Chip';
 import { first, fromPairs, groupBy, keys, map, sortBy } from 'lodash';
 import React, { PureComponent } from 'react';
@@ -30,7 +31,7 @@ class PinSerie extends PureComponent<PinSerieProps> {
         return (
           <Marker key={`marker-${index}`} longitude={pin.longitude} latitude={pin.latitude}>
             <div className="container1005" onClick={() => onClick(pin)}>
-              <i className={`${pin.icon} pin1000 ${last ? 'pinActive1001' : ''}`} style={{ color: pin.color || ColorService.getColor(pin.key) }}></i>
+              <Icon className={`${pin.icon} pin1000 ${last ? 'pinActive1001' : ''}`} style={{ color: pin.color || ColorService.getColor(pin.key) }} />
             </div>
             {last && (
               <div className="containerWrap1005">
