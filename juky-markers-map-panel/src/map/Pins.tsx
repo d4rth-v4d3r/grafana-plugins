@@ -6,7 +6,7 @@ import { Marker } from 'react-map-gl';
 import ColorService from 'service/ColorService';
 import { PinRow, PinSerieProps, PinsProps } from 'types';
 import '../assets/css/marker-icons.css';
-//import './Pin.css';
+import './Pin.css';
 
 const dataFrameToJson = (frame: DataFrame): PinRow[] => {
   const source = fromPairs(map(frame.fields, field => [field.name, field.values.toArray()]));
