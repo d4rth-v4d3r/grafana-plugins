@@ -2,6 +2,7 @@ import { CSSProperties } from '@material-ui/core/styles/withStyles';
 import React, { Component } from 'react';
 import MapGL, { FullscreenControl, NavigationControl, Popup, ScaleControl } from 'react-map-gl';
 import { MapProps, PinRow } from 'types';
+import ControlPanel from './Legend';
 import PinInfo from './PinInfo';
 import Pins from './Pins';
 
@@ -83,30 +84,31 @@ export default class Map extends Component<MapProps> {
     const { viewport } = this.state;
 
     return (
-      <MapGL
-        {...viewport}
-        width="100%"
-        height="100%"
-        mapStyle={this.props.options.style}
-        onViewportChange={this._updateViewport}
-        mapboxApiAccessToken={this.props.options.apiKey}
-      >
-        <Pins data={this.props.data} options={this.props.options} onClick={this._onClickMarker} />
+      <React.Fragment>
+        <ControlPanel data={this.props.data} options={this.props.options} onClick={this._onClickMarker} />
+        <MapGL
+          {...viewport}
+          width="100%"
+          height="100%"
+          mapStyle={this.props.options.style}
+          onViewportChange={this._updateViewport}
+          mapboxApiAccessToken={this.props.options.apiKey}
+        >
+          <Pins data={this.props.data} options={this.props.options} onClick={this._onClickMarker} />
 
-        {this._renderPopup()}
+          {this._renderPopup()}
 
-        <div style={fullscreenControlStyle}>
-          <FullscreenControl />
-        </div>
-        <div style={navStyle}>
-          <NavigationControl />
-        </div>
-        <div style={scaleControlStyle}>
-          <ScaleControl />
-        </div>
-
-        {/* <ControlPanel /> */}
-      </MapGL>
+          <div style={fullscreenControlStyle}>
+            <FullscreenControl />
+          </div>
+          <div style={navStyle}>
+            <NavigationControl />
+          </div>
+          <div style={scaleControlStyle}>
+            <ScaleControl />
+          </div>
+        </MapGL>
+      </React.Fragment>
     );
   }
 }

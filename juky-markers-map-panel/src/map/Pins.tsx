@@ -1,5 +1,4 @@
 import { DataFrame } from '@grafana/data';
-import Chip from '@material-ui/core/Chip';
 import { first, fromPairs, groupBy, keys, map, sortBy } from 'lodash';
 import React, { PureComponent } from 'react';
 import { Marker } from 'react-map-gl';
@@ -8,7 +7,7 @@ import { PinRow, PinSerieProps, PinsProps } from 'types';
 import '../assets/css/marker-icons.css';
 import './Pin.css';
 
-const dataFrameToJson = (frame: DataFrame): PinRow[] => {
+export const dataFrameToJson = (frame: DataFrame): PinRow[] => {
   const source = fromPairs(map(frame.fields, field => [field.name, field.values.toArray()]));
 
   return map(first(frame.fields)?.values as any, (_v, index: number) =>
@@ -16,13 +15,15 @@ const dataFrameToJson = (frame: DataFrame): PinRow[] => {
   ) as any;
 };
 
+export const getGroups = (data: PinRow[]) => groupBy(data, d => d.key);
+
 class PinSerie extends PureComponent<PinSerieProps> {
   render() {
     const { frame, onClick } = this.props;
 
     const source = dataFrameToJson(frame);
 
-    const groups = groupBy(source, s => s.key);
+    const groups = getGroups(source);
 
     return map(keys(groups), key =>
       sortBy(groups[key], pin => pin.time).map((pin, index) => {
@@ -34,11 +35,11 @@ class PinSerie extends PureComponent<PinSerieProps> {
               <div className=" container" onClick={() => onClick(pin)}>
                 <i className={`${pin.icon} pin ${last ? 'pinActive' : ''}`} style={{ color: pin.color || ColorService.getColor(pin.key) }}></i>
               </div>
-              {last && (
+              {/* {last && (
                 <div className="containerWrap">
                   <Chip label={pin.name} />
                 </div>
-              )}
+              )} */}
             </div>
           </Marker>
         );
